@@ -1,8 +1,14 @@
 package br.com.fiap.agroplus.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +24,12 @@ public class Vendedor {
 	
 	@Column(name="DS_CONTATO")
 	private String contato;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "ID_VENDEDOR", referencedColumnName = "ID_VENDEDOR", insertable = false, updatable = false)
+	})
+	private List<HistoricoVendas> vendas;
 	
 	public Long getId() {
 		return id;
@@ -36,5 +48,11 @@ public class Vendedor {
 	}
 	public void setContato(String contato) {
 		this.contato = contato;
+	}
+	public List<HistoricoVendas> getVendas() {
+		return vendas;
+	}
+	public void setVendas(List<HistoricoVendas> vendas) {
+		this.vendas = vendas;
 	}
 }
