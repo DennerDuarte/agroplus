@@ -4,8 +4,6 @@ import br.com.fiap.agroplus.entity.Vendedor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface VendedorRepository extends CrudRepository<Vendedor, Long> {
 

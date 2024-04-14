@@ -1,11 +1,13 @@
 package br.com.fiap.agroplus.Service;
 
-import br.com.fiap.agroplus.entity.Vendedor;
-import br.com.fiap.agroplus.repository.VendedorRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import br.com.fiap.agroplus.entity.Vendedor;
+import br.com.fiap.agroplus.repository.VendedorRepository;
 
 @Service
 public class VendedorService {
@@ -13,8 +15,8 @@ public class VendedorService {
     @Autowired
     VendedorRepository vendedorRepository;
 
-    public Vendedor getAll(){
-        return (Vendedor) vendedorRepository.findAll();
+    public List<Vendedor> getAll(){
+        return (List<Vendedor>) vendedorRepository.findAll();
     }
     public Optional<Vendedor> getById(Long id) {
         return vendedorRepository.findById(id);
