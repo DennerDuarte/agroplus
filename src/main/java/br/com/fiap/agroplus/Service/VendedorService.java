@@ -15,9 +15,9 @@ import br.com.fiap.agroplus.repository.VendedorRepository;
 public class VendedorService {
 
     @Autowired
-    VendedorRepository vendedorRepository;
+    private VendedorRepository vendedorRepository;
     
-    VendedorFactory factory = new VendedorFactory();
+    private final VendedorFactory factory = new VendedorFactory();
 
     public List<VendedorDTO> getAll(){
     	return factory.toDto((List<Vendedor>) vendedorRepository.findAll());
