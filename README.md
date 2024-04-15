@@ -15,15 +15,12 @@ Ao abrir a aplicação, basta entrar na classe 'AgroplusApplication' e dar run(S
 Assim que a aplicação realiazar o build da mesma, a aplicação vai ser lançada e estará apta para funcionamento. 
 
 
-//Imagem dos diagramas
-
-
-//Link do "Pitch"
+Link do pitch no youtube: https://youtu.be/HcsZzeJStkQ
 
 
 EndPoints:
-GET || "/vendedores"
-GET com parametros de 1 a 5|| "/vendedores/{id}"
-POST || "/vendedor"
-PUT || "/vendedor/6"
-DELETE || "/vendedor/6"
+GET || "/vendedores"     
+GET com parametros de 1 a 5|| "/vendedores/{id}"    
+POST || "/vendedor"       
+PUT || "/vendedor/6"        
+DELETE || "/vendedor/6"      
