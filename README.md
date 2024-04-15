@@ -1,18 +1,39 @@
-Nome da Aplicação: Agro+(AgroPlus)<br/>
+
+<h1>Nome da Aplicação: Agro+</h1>
+
+<h3>Integrantes: </h3>
+<ul>
+    <li>Lucas Petroni - Responsável pelo desenvolvimento do frontend da aplicação.</li>
+    <li>Matheus Paulo Lima Delgado - Responsável pelas atividades relacionadas a IA e infraestrutura.</li>
+    <li>Caio Boris - Resposável por gravar o pitch e criar a documentação sobre a ideia do projeto.</li>
+    <li>Nathaly Oliveira - Responsável pela criação da base de dados e Api.</li>
+    <li>Denner Duarte - Responsável pela realização da API.</li>
+</ul>
+
+<h3>Intruções para rodar a aplicação: </h3>
+<p>Ao clonar a aplicação e importá-la na IDE de preferência, rodar a classe 'AgroplusApplication'. O servidor acoplado à aplicação irá iniciar juntamente da API, a qual estará disponível para uso na URL localhost:8080.</p>
+
+
 <br/>
-Integrantes: <br/>
-Lucas Petroni - Responsável pela documentação do projeto <br/>
-Matheus Paulo Lima Delgado - Responsável pela documentação do projeto <br/>
-Caio Boris - Resposável por gravar o pitch sobre a solução da ideia do projeto <br/>
-Nathaly Oliveira - Responsável pela realização do código do projeto <br/>
-Denner Duarte - Responsável pela realização do código do projeto <br/>
+<h3>Link do pitch no youtube: </h3>
+ https://youtu.be/HcsZzeJStkQ<br/>
 <br/>
-Intruções para rodar a aplicação: Ao clonar a aplicação, é necessário que seja aberta em uma IDEA(Intellij, NetBeans) para que a mesma iniciada e seja feita a utilização da mesma. Ao abrir a aplicação, basta entrar na classe 'AgroplusApplication' e dar run(Shift+F10 no Intellij) na aplicação. Assim que a aplicação realiazar o build da mesma, a aplicação vai ser lançada e estará apta para funcionamento.<br/>
+
+<h3>EndPoints: </h3>
+
+<ul>
+    <li>GET /vendedores</li>
+    <li>GET /vendedores/{id}</li>
+    <li>POST /vendedor</li>
+    <li>PUT /vendedor/6</li>
+    <li>DELETE /vendedor/6</li>
+</ul>
+
+<h1>Diagramas</h1>
+
+<h3>Diagrama de Entidades e Relacionamentos</h3>
+<img src='./Documentacao/DiagramaEntidadeRelacionamento.png'/>
 <br/>
-Link do pitch no youtube: https://youtu.be/HcsZzeJStkQ<br/>
-<br/>
-EndPoints: GET || "/vendedores"<br/>
-GET com parametros de 1 a 5|| "/vendedores/{id}"<br/>
-POST || "/vendedor"<br/>
-PUT || "/vendedor/6"<br/>
-DELETE || "/vendedor/6"<br/>
+<h3>Diagrama de Classes</h3>
+<img src='./Documentacao/DiagramaClasses.png'/>
+
