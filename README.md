@@ -22,11 +22,11 @@
 <h3>EndPoints: </h3>
 
 <ul>
-    <li>GET /vendedores</li>
-    <li>GET /vendedores/{id}</li>
+    <li>GET /vendedor</li>
+    <li>GET /vendedor/{id}</li>
     <li>POST /vendedor</li>
-    <li>PUT /vendedor/6</li>
-    <li>DELETE /vendedor/6</li>
+    <li>PUT /vendedor/{id}</li>
+    <li>DELETE /vendedor/{id}</li>
 </ul>
 
 <h1>Diagramas</h1>
