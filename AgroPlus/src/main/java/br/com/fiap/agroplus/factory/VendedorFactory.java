@@ -26,6 +26,7 @@ public class VendedorFactory {
 		dto.setNome(vendedor.getNome());
 		dto.setContato(vendedor.getContato());
 		dto.setVendas(historicoVendasFactory.toDto(vendedor.getVendas()));
+
 		
 		return dto;
 	}

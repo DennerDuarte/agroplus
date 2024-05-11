@@ -1,11 +1,14 @@
 package br.com.fiap.agroplus.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name="T_REGIAO")
 public class Regiao {
 	
@@ -16,17 +19,10 @@ public class Regiao {
 	@Column(name="DS_NOME_REGIAO")
 	private String nome;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	@ManyToMany
+	@JoinTable(name = "T_VENDEDOR_REGIAO",
+			joinColumns = @JoinColumn(name = "ID_REGIAO"),
+			inverseJoinColumns = @JoinColumn(name = "ID_VENDEDOR"))
+	private List<Vendedor> vendedores;
 
 }

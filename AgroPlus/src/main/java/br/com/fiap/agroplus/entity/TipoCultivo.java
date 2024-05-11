@@ -1,11 +1,14 @@
 package br.com.fiap.agroplus.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name="T_TIPOS_CULTIVOS")
 public class TipoCultivo {
 	
@@ -16,17 +19,9 @@ public class TipoCultivo {
 	@Column(name="DS_NOME_CULTIVO")
 	private String descricao;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return descricao;
-	}
-	public void setNome(String descricao) {
-		this.descricao = descricao;
-	}
-
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name="TB_CLIENTE_TIPOCULTIVO",
+			joinColumns = @JoinColumn(name="ID_CLIENTE"),
+			inverseJoinColumns = @JoinColumn(name="ID_TIPO_CULTIVO"))
+	private List<Cliente> clientes;
 }
