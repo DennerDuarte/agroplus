@@ -17,7 +17,7 @@ public class VendedorService {
     @Autowired
     private VendedorRepository vendedorRepository;
     
-    private final VendedorFactory factory = new VendedorFactory();
+    private VendedorFactory factory = new VendedorFactory();
 
     public List<VendedorDTO> getAll(){
     	return factory.toDto((List<Vendedor>) vendedorRepository.findAll());

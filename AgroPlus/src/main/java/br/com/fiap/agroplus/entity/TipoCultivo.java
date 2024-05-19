@@ -20,7 +20,7 @@ public class TipoCultivo {
 	private String descricao;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name="TB_CLIENTE_TIPOCULTIVO",
+	@JoinTable(name="T_CLIENTE_TIPOCULTIVO",
 			joinColumns = @JoinColumn(name="ID_CLIENTE"),
 			inverseJoinColumns = @JoinColumn(name="ID_TIPO_CULTIVO"))
 	private List<Cliente> clientes;

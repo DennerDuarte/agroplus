@@ -30,12 +30,4 @@ public class InfoRegiao {
 	
 	@Column(name="DT_INFO")
 	private LocalDate dataInfo;
-
-	@ManyToOne
-	@JoinColumns(value = {
-		@JoinColumn(name = "ID_REGIAO", referencedColumnName = "ID_REGIAO", insertable = false, updatable = false)
-	})
-	private Regiao regiao;
-	
-
 }

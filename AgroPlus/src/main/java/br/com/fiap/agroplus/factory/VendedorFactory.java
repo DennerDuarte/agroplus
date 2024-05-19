@@ -11,6 +11,7 @@ import br.com.fiap.agroplus.entity.Vendedor;
 public class VendedorFactory {
 	
 	private HistoricoVendasFactory historicoVendasFactory = new HistoricoVendasFactory();
+	private RegiaoFactory regiaoFactory = new RegiaoFactory();
 	
 	public List<VendedorDTO> toDto(List<Vendedor> vendedores) {
 	    return Optional.ofNullable(vendedores)
@@ -26,7 +27,7 @@ public class VendedorFactory {
 		dto.setNome(vendedor.getNome());
 		dto.setContato(vendedor.getContato());
 		dto.setVendas(historicoVendasFactory.toDto(vendedor.getVendas()));
-
+		dto.setRegioes(regiaoFactory.toDto(vendedor.getRegioes()));
 		
 		return dto;
 	}
@@ -45,6 +46,7 @@ public class VendedorFactory {
 		entity.setNome(vendedor.getNome());
 		entity.setContato(vendedor.getContato());
 		entity.setVendas(historicoVendasFactory.toEntity(vendedor.getVendas()));
+		entity.setRegioes(regiaoFactory.toEntity(vendedor.getRegioes()));
 		
 		return entity;
 	}

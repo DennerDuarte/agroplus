@@ -2,7 +2,11 @@ package br.com.fiap.agroplus.entity;
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -20,7 +24,7 @@ public class Vendedor {
 	
 	@Column(name="DS_NOME")
 	@NotNull(message = "É necessário que o nome seja informado.")
-	@Size(min = 10, max = 60, message = "O nome precisa ter entre 10 e 60 caracteres")
+	@Size(min = 3, max = 60, message = "O nome precisa ter entre 3 e 60 caracteres")
 	private String nome;
 	
 	@Column(name="DS_CONTATO")
@@ -28,7 +32,10 @@ public class Vendedor {
 	private String contato;
 	
 	@ManyToMany(mappedBy = "vendedor")
-	private InfoRegiao infoRegiao;
+	private List<HistoricoVendas> vendas;
+	
+	@ManyToMany(mappedBy = "vendedores")
+	private List<Regiao> regioes;
 
 
 }

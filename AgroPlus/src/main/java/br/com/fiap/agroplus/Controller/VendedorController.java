@@ -23,6 +23,7 @@ public class VendedorController {
 
     @Autowired
     private VendedorService vendedorService;
+    
     @GetMapping()
     public List<VendedorDTO> findAll(){
         return vendedorService.getAll();
