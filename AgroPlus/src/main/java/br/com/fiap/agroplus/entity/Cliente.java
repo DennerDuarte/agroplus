@@ -8,6 +8,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +23,8 @@ public class Cliente {
 	@Column(name="ID_CLIENTE")
 	private Long id;
 	
+	@NotNull(message = "É necessário que o nome do cliente seja informado.")
+	@Size(min = 3, max = 60, message = "O nome precisa ter entre 3 e 60 caracteres")
 	@Column(name="DS_NOME_CLIENTE")
 	private String nome;
 

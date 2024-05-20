@@ -2,7 +2,14 @@ package br.com.fiap.agroplus.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +32,11 @@ public class HistoricoVendas {
 	@Column(name="DT_VENDA")
 	private LocalDate dataVenda;
 
+	@Min(0)
 	@Column(name="NR_QUANTIDADE")
 	private Integer quantidade;
 
+	@Min(0)
 	@Column(name="NR_VALOR_TOTAL")
 	private Double valorTotal;
 	

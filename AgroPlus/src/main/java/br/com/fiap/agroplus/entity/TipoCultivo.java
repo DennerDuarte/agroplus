@@ -1,6 +1,7 @@
 package br.com.fiap.agroplus.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class TipoCultivo {
 	private Long id;
 	
 	@Column(name="DS_NOME_CULTIVO")
+	@NotNull(message = "O nome do cultivo é obrigatório.")
 	private String descricao;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
