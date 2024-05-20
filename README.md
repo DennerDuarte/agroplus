@@ -29,6 +29,14 @@
     <li>DELETE /vendedor/{id}</li>
 </ul>
 
+<ul>
+    <li>GET /cliente</li>
+    <li>GET /cliente/{id}</li>
+    <li>POST /cliente</li>
+    <li>PUT /cliente/{id}</li>
+    <li>DELETE /cliente/{id}</li>
+</ul>
+
 <h1>Diagramas</h1>
 
 <h3>Diagrama de Entidades e Relacionamentos</h3>
