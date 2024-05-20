@@ -36,4 +36,6 @@
 <br/>
 <h3>Diagrama de Classes</h3>
 <img src='./Documentacao/DiagramaClasses.png'/>
-
+<br/>
+<h3>Arquitetura</h3>
+<img src='./Documentacao/ArquiteturaAgroPlus.png'/>
