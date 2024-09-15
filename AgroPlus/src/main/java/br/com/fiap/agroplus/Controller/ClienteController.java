@@ -1,64 +1,54 @@
-package br.com.fiap.agroplus.Controller;
+package br.com.fiap.agroplus.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.fiap.agroplus.Service.ClienteService;
 import br.com.fiap.agroplus.dto.ClienteDTO;
 
-@RestController
-@RequestMapping("/cliente")
+@Controller
+@RequestMapping("/clientes")
 public class ClienteController {
 
-	 @Autowired
-	    private ClienteService clienteService;
-	    
-	    @GetMapping()
-	    public List<ClienteDTO> findAll(){
-	        return clienteService.getAll();
-	    }
+    @Autowired
+    private ClienteService service;
 
-	    @GetMapping("/{id}")
-	    public ClienteDTO findById(@PathVariable long id){
-	        return clienteService.getById(id);
-	    }
+    @GetMapping
+    public String listarClientes(Model model) {
+        List<ClienteDTO> clientes = service.getAll();
+        model.addAttribute("clientes", clientes);
+        return "clientes";
+    }
+    
+    @PostMapping("/adicionar")
+    public String adicionarCliente(@RequestParam String nome, Model model) {
+    	ClienteDTO cliente = new ClienteDTO();
+    	cliente.setNome(nome);
+        service.criarCliente(cliente);
+        return "redirect:/clientes";
+    }
+    
+    @PostMapping("/editar")
+    public String editarCliente(@RequestParam Long id, @RequestParam String nome, Model model) {
+        ClienteDTO cliente = new ClienteDTO();
+        cliente.setId(id);
+        cliente.setNome(nome);
+        service.updateCliente(id, cliente);
+        return "redirect:/clientes";
+    }
+    
+    @PostMapping("/excluir/{id}")
+    public String excluirCliente(@PathVariable Long id) {
+    	service.deleteCliente(id);
+        return "redirect:/clientes";
+    }
 
-	    @PostMapping()
-	    public ResponseEntity<ClienteDTO> criarCliente(@RequestBody ClienteDTO cliente){
-	        ClienteDTO novoCliente = clienteService.criarCliente(cliente);
-	        return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
-	    }
-
-	    @DeleteMapping("/{id}")
-	    public ResponseEntity<Void> excluirCliente(@PathVariable Long id){
-	        boolean vlienteDeletado = clienteService.deleteCliente(id);
-	        if(vlienteDeletado){
-	            return ResponseEntity.noContent().build();
-	        }
-
-	        return ResponseEntity.notFound().build();
-	    }
-
-	    @PutMapping("/{id}")
-	    public ResponseEntity<ClienteDTO> atualizarCliente(@PathVariable Long id, @RequestBody ClienteDTO vliente ){
-	        ClienteDTO vlienteAtualizado = clienteService.updateCliente(id, vliente);
-
-	        if(vlienteAtualizado != null){
-	            return ResponseEntity.ok(vlienteAtualizado);
-	        }
-
-	        return ResponseEntity.notFound().build();
-	    }
-	
 }

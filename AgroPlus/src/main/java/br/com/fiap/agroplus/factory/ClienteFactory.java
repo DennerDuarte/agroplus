@@ -23,6 +23,7 @@ public class ClienteFactory {
 		ClienteDTO dto = new ClienteDTO();
 		dto.setId(cliente.getId());
 		dto.setNome(cliente.getNome());
+		//List<TipoCultivo> tipo = cliente.getTipoCultivos();
 		dto.setTipoCultivos(tipoCultivoFactory.toDto(cliente.getTipoCultivos()));
 		dto.setVendas(historicoVendasFactory.toDto(cliente.getVendas()));
 		return dto;

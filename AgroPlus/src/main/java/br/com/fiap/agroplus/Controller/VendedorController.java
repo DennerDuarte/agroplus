@@ -1,63 +1,59 @@
-package br.com.fiap.agroplus.Controller;
+package br.com.fiap.agroplus.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.fiap.agroplus.Service.VendedorService;
 import br.com.fiap.agroplus.dto.VendedorDTO;
 
-@RestController
-@RequestMapping("/vendedor")
+@Controller
+@RequestMapping("/vendedores")
 public class VendedorController {
+	
+	@Autowired
+    private VendedorService service;
 
-    @Autowired
-    private VendedorService vendedorService;
+    @GetMapping
+    public String listarVendedores(Model model) {
+        List<VendedorDTO> vendedores = service.getAll();
+        model.addAttribute("vendedores", vendedores);
+        return "vendedores";
+    }
     
-    @GetMapping()
-    public List<VendedorDTO> findAll(){
-        return vendedorService.getAll();
+    @PostMapping("/adicionar")
+    public String adicionarVendedor(@RequestParam String nome, @RequestParam String contato,
+    		Model model) {
+    	VendedorDTO vendedor = new VendedorDTO();
+    	vendedor.setNome(nome);
+    	vendedor.setContato(contato);
+        service.criarVendedor(vendedor);
+        return "redirect:/vendedores";
+    }
+    
+    @PostMapping("/editar")
+    public String editarVendedor(@RequestParam Long id, @RequestParam String nome, @RequestParam String contato,
+    		Model model) {
+        VendedorDTO vendedor = new VendedorDTO();
+        vendedor.setId(id);
+        vendedor.setNome(nome);
+        vendedor.setContato(contato);
+        service.updateVendedor(id, vendedor);
+        return "redirect:/vendedores";
+    }
+    
+    @PostMapping("/excluir/{id}")
+    public String excluirVendedor(@PathVariable Long id) {
+    	service.deleteVendedor(id);
+        return "redirect:/vendedores";
     }
 
-    @GetMapping("/{id}")
-    public VendedorDTO findById(@PathVariable long id){
-        return vendedorService.getById(id);
-    }
 
-    @PostMapping()
-    public ResponseEntity<VendedorDTO> criarVendedor(@RequestBody VendedorDTO vendedor){
-        VendedorDTO novoVendedor = vendedorService.criarVendedor(vendedor);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoVendedor);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirVendedor(@PathVariable Long id){
-        boolean vendedorDeletado = vendedorService.deleteVendedor(id);
-        if(vendedorDeletado){
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.notFound().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<VendedorDTO> atualizarVendedor(@PathVariable Long id, @RequestBody VendedorDTO vendedor ){
-        VendedorDTO vendedorAtualizado = vendedorService.updateVendedor(id, vendedor);
-
-        if(vendedorAtualizado != null){
-            return ResponseEntity.ok(vendedorAtualizado);
-        }
-
-        return ResponseEntity.notFound().build();
-    }
 }

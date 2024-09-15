@@ -9,14 +9,9 @@ import java.time.LocalDate;
 public class InfoRegiaoDTO {
 
     private Long id;
-
     private Long id_cliente;
-
     private Double temperatura;
-
     private Double umidade;
-
     private Double precipitacao;
-
     private LocalDate dataInfo;
 }
