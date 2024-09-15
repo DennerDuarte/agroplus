@@ -15,15 +15,14 @@ public class TipoCultivo {
 	
 	@Id
 	@Column(name="ID_TIPO_CULTIVO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="DS_NOME_CULTIVO")
 	@NotNull(message = "O nome do cultivo é obrigatório.")
 	private String descricao;
 	
-	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name="T_CLIENTE_TIPOCULTIVO",
-			joinColumns = @JoinColumn(name="ID_CLIENTE"),
-			inverseJoinColumns = @JoinColumn(name="ID_TIPO_CULTIVO"))
-	private List<Cliente> clientes;
+	@ManyToMany(mappedBy = "tipoCultivos", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Cliente> clientes;
+
 }

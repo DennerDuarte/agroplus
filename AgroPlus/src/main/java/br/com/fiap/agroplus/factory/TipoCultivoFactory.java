@@ -17,6 +17,11 @@ public class TipoCultivoFactory {
 	}
 
 	public TipoCultivoDTO toDto(TipoCultivo tipocultivo) {
+		
+		if(tipocultivo == null) {
+			return null;
+		}
+		
 		TipoCultivoDTO dto = new TipoCultivoDTO();
 		dto.setId(tipocultivo.getId());
 		dto.setDescricao(tipocultivo.getDescricao());
