@@ -62,4 +62,7 @@ jobs:
           app-name: 'agroplus-java'
           slot-name: 'Production'
           package: '*.jar'
-          
+         env:
+            DATABASE_URL: 'jdbc\:sqlserver://agroplus-db.database.windows.net:1433;database=agroplus_bd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;'
+            DATABASE_USER: 'adm-agro-plus'
+            DATABASE_PASSWORD: '123Teste'
